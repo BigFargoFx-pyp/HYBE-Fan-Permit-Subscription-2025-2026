@@ -1,60 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Official HYBE Fan Permit Subscription 2025/2026</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HYBE Fan Permit Subscription 2025/2026</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
-
-  <!-- Awesomplete CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.css" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #e0eafc, #cfdef3);
+      background: linear-gradient(135deg, #f9fafb, #e0e3e7);
       padding: 20px;
       animation: fadeIn 1s ease;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
     .form-container {
       background: white;
       max-width: 700px;
       margin: auto;
-      padding: 40px 30px;
-      border-radius: 15px;
+      padding: 40px;
+      border-radius: 20px;
       box-shadow: 0 12px 24px rgba(0,0,0,0.08);
-      transition: all 0.3s ease;
-    }
-
-    .form-container:hover {
-      transform: scale(1.01);
+      transition: all 0.4s ease;
     }
 
     .form-container img {
       display: block;
       max-width: 150px;
-      margin: 0 auto 20px;
+      margin: 0 auto 10px;
     }
 
-    h2 {
+    h2, h4 {
       text-align: center;
       margin-bottom: 10px;
-      font-weight: 600;
     }
 
-    .subheading {
-      text-align: center;
-      font-size: 16px;
+    h4 {
+      font-weight: 300;
       color: #555;
-      margin-bottom: 30px;
     }
 
     label {
@@ -71,12 +56,11 @@
       border: 1px solid #ccc;
       border-radius: 8px;
       font-size: 15px;
-      transition: all 0.3s ease;
+      transition: border-color 0.3s;
     }
 
     input:focus, select:focus, textarea:focus {
       border-color: #007bff;
-      box-shadow: 0 0 5px rgba(0,123,255,0.3);
     }
 
     input[type="checkbox"] {
@@ -92,17 +76,7 @@
       font-size: 12px;
     }
 
-    .hidden {
-      display: none;
-    }
-
-    #preview {
-      width: 100px;
-      margin: 10px auto;
-      display: block;
-      border-radius: 8px;
-      object-fit: cover;
-    }
+    .hidden { display: none; }
 
     button {
       background: #007bff;
@@ -115,144 +89,120 @@
       font-weight: 600;
       cursor: pointer;
       margin-top: 20px;
-      transition: background 0.3s ease, transform 0.2s;
+      transition: background 0.3s ease;
     }
 
-    button:hover {
-      background: #0056b3;
-      transform: scale(1.02);
-    }
+    button:hover { background: #0056b3; }
 
-    button:active {
-      transform: scale(0.98);
-    }
-
-    /* Footer */
-    .footer {
-      background-color: #222;
-      color: white;
+    footer {
       text-align: center;
       padding: 20px;
-      margin-top: 50px;
+      font-size: 13px;
+      color: #999;
+      background: #f1f3f5;
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+    }
+
+    footer a { color: #999; text-decoration: none; margin: 0 8px; }
+    footer a:hover { text-decoration: underline; }
+
+    #previewSelfie {
+      max-width: 100px;
+      margin-top: 10px;
       border-radius: 8px;
-    }
-
-    .footer img {
-      max-width: 120px;
-      margin-bottom: 10px;
-    }
-
-    .footer a {
-      color: #007bff;
-      text-decoration: none;
-      margin: 0 10px;
-      font-weight: 600;
-    }
-
-    .footer a:hover {
-      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
 <div class="form-container">
-  <!-- HYBE Logo -->
-  <img src="https://i.ibb.co/sppMqFZ0/IMG-0286.png" alt="HYBE Logo">
-
+  <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/HYBE_Corporation_Logo.png" alt="HYBE Logo">
   <h2>HYBE Fan Permit Subscription 2025/2026</h2>
-  <div class="subheading">Secure your official HYBE Fan Membership today!</div>
+  <h4>Become an Official HYBE Fan Member Today</h4>
 
   <form id="hybeForm" enctype="multipart/form-data">
-
-    <!-- Fan Preferences -->
     <label>Select HYBE Branch</label>
-    <select id="branchSelect" name="Branch" required>
+    <select id="branchSelect" required onchange="loadGroups()">
       <option value="">-- Select Branch --</option>
       <option value="BigHit">BigHit Music</option>
       <option value="HybeLabel">HYBE Labels</option>
     </select>
 
     <label>Select Your Favorite Group</label>
-    <select id="groupSelect" name="Group" required>
+    <select id="groupSelect" required onchange="loadArtists()">
       <option value="">-- Select Group --</option>
     </select>
 
     <label>Select Your Favorite Artist(s)</label>
-    <select id="artistSelect" name="Artist" required>
+    <select id="artistSelect" required>
       <option value="">-- Select Artist --</option>
     </select>
 
-    <!-- Payment -->
     <label>Annual Subscription Fee</label>
     <input type="text" value="$520/year" readonly>
 
     <label>Select Payment Type</label>
-    <select id="paymentType" name="PaymentType" required>
+    <select id="paymentType" required onchange="showInstallmentOptions()">
       <option value="">-- Select Payment Type --</option>
       <option value="full">Full Payment</option>
       <option value="installment">Installment</option>
     </select>
 
+    <div id="paymentSummary" class="hidden"></div>
+
     <div id="installmentOptions" class="hidden">
       <label>Select Installment Plan</label>
-      <select id="installmentPlan" name="InstallmentPlan">
+      <select id="installmentPlan" onchange="showInstallmentCalc()">
         <option value="">-- Select Installment Plan --</option>
         <option value="2">2 Installments ($260 each)</option>
         <option value="3">3 Installments ($173.33 each)</option>
       </select>
-      <p id="installmentCalc"></p>
     </div>
 
-    <!-- Country Autocomplete -->
+    <div id="paymentMethods" class="hidden">
+      <label>Payment Methods</label>
+      <select required>
+        <option value="">-- Select Payment Method --</option>
+        <option value="crypto">Digital Currency</option>
+        <option value="card">Card Payment</option>
+      </select>
+    </div>
+
     <label>What country do you live in?</label>
-    <input type="text" id="countryInput" name="Country" required class="awesomplete" autocomplete="off">
+    <input type="text" name="Country" list="countryList" required>
+    <datalist id="countryList">
+      <option value="USA">
+      <option value="South Korea">
+      <option value="Japan">
+      <option value="UK">
+      <option value="Australia">
+      <option value="Canada">
+    </datalist>
 
-    <!-- Live Selfie Upload -->
     <label>Upload Clear Live Selfie Picture</label>
-    <input type="file" id="selfieInput" name="Selfie" accept="image/*" capture="user" required>
-    <img id="preview" src="#" class="hidden" alt="Preview">
-    <small>Please take a live photo using your device camera (no pre-uploaded images allowed).</small>
+    <input type="file" accept="image/*" capture="user" required onchange="previewImage(event)">
+    <img id="previewSelfie" class="hidden"/>
 
-    <!-- Communication -->
     <label>Preferred Communication Method</label>
-    <input type="checkbox" name="PreferredCommunication" value="Email" required> Email
-    <input type="checkbox" name="PreferredCommunication" value="SMS" style="margin-left:20px;"> SMS
+    <input type="checkbox" value="Email" required> Email
+    <input type="checkbox" value="SMS" style="margin-left:20px;"> SMS
     <small>(You can select both)</small>
 
-    <!-- Terms -->
-    <input type="checkbox" id="agreeTerms" name="AgreeTerms" required>
-    <label for="agreeTerms">I have read and agree to HYBE’s Privacy Policy and Terms.</label>
+    <input type="checkbox" id="agreeTerms" required>
+    <label for="agreeTerms">I have read and agree to HYBE’s Terms and Policies.</label>
 
     <button type="submit">Complete Subscription</button>
   </form>
 </div>
 
-<!-- Footer -->
-<div class="footer">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/HYBE_Corporation_Logo.png" alt="HYBE Logo">
-  <p>&copy; 2025 HYBE Corporation | All rights reserved</p>
-  <div>
-    <a href="https://twitter.com/hybe_official" target="_blank">Twitter</a>
-    <a href="https://www.instagram.com/hybe_labels/" target="_blank">Instagram</a>
-    <a href="https://www.hybecorp.com/" target="_blank">Official Site</a>
-  </div>
-</div>
-
-<!-- Just-validate JS -->
-<script src="https://cdn.jsdelivr.net/npm/just-validate@4.2.0/dist/just-validate.production.min.js"></script>
-
-<!-- Inputmask JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.7/inputmask.min.js"></script>
-
-<!-- Awesomplete JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.min.js"></script>
-
-<!-- SweetAlert2 -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<footer>
+  &copy; 2025 HYBE Corporation. All rights reserved. 
+  <a href="#">Privacy Policy</a>|
+  <a href="#">Terms of Service</a>
+</footer>
 
 <script>
-// Group & Artist Dependencies
 const groups = {
   "BigHit": ["BTS", "TXT"],
   "HybeLabel": ["Seventeen", "Enhypen"]
@@ -265,78 +215,56 @@ const artists = {
   "Enhypen": ["Heeseung", "Jay", "Jake", "Sunghoon", "Sunoo", "Jungwon", "Ni-ki"]
 };
 
-document.getElementById('branchSelect').addEventListener('change', function() {
+function loadGroups() {
+  const branch = document.getElementById('branchSelect').value;
   const groupSelect = document.getElementById('groupSelect');
-  groupSelect.innerHTML = '<option value="">-- Select Group --</option>';
-  if (groups[this.value]) {
-    groups[this.value].forEach(group => {
+  groupSelect.innerHTML = `<option value="">-- Select Group --</option>`;
+  if (groups[branch]) {
+    groups[branch].forEach(group => {
       groupSelect.innerHTML += `<option value="${group}">${group}</option>`;
     });
   }
-});
+}
 
-document.getElementById('groupSelect').addEventListener('change', function() {
+function loadArtists() {
+  const group = document.getElementById('groupSelect').value;
   const artistSelect = document.getElementById('artistSelect');
-  artistSelect.innerHTML = '<option value="">-- Select Artist --</option>';
-  if (artists[this.value]) {
-    artists[this.value].forEach(artist => {
+  artistSelect.innerHTML = `<option value="">-- Select Artist --</option>`;
+  if (artists[group]) {
+    artists[group].forEach(artist => {
       artistSelect.innerHTML += `<option value="${artist}">${artist}</option>`;
     });
   }
-});
+}
 
-// Installment Logic
-document.getElementById('paymentType').addEventListener('change', function() {
-  document.getElementById('installmentOptions').classList.toggle('hidden', this.value !== 'installment');
-});
-
-document.getElementById('installmentPlan').addEventListener('change', function() {
-  const calc = document.getElementById('installmentCalc');
-  if (this.value === "2") calc.innerHTML = "You will pay $260 per installment.";
-  else if (this.value === "3") calc.innerHTML = "You will pay ~$173.33 per installment.";
-  else calc.innerHTML = "";
-});
-
-// Upload Preview
-document.getElementById('selfieInput').addEventListener('change', function(event) {
-  const preview = document.getElementById('preview');
-  const file = event.target.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      preview.src = e.target.result;
-      preview.classList.remove('hidden');
-    };
-    reader.readAsDataURL(file);
+function showInstallmentOptions() {
+  const type = document.getElementById('paymentType').value;
+  document.getElementById('installmentOptions').classList.toggle('hidden', type !== 'installment');
+  document.getElementById('paymentMethods').classList.toggle('hidden', type === '');
+  document.getElementById('paymentSummary').classList.toggle('hidden', type === '');
+  if (type === 'full') {
+    document.getElementById('paymentSummary').innerText = "Total: $520";
+  } else {
+    document.getElementById('paymentSummary').innerText = "";
   }
-});
+}
 
-// Awesomplete Countries
-const countries = ["United States", "United Kingdom", "South Korea", "Japan", "Philippines", "Canada", "Australia", "Germany", "France"];
-new Awesomplete(document.getElementById('countryInput'), {
-  list: countries
-});
+function showInstallmentCalc() {
+  const plan = document.getElementById('installmentPlan').value;
+  if (plan === '2') {
+    document.getElementById('paymentSummary').innerText = "2 Installments of $260";
+  } else if (plan === '3') {
+    document.getElementById('paymentSummary').innerText = "3 Installments of ~$173.33";
+  } else {
+    document.getElementById('paymentSummary').innerText = "";
+  }
+}
 
-// Form Validation
-const validation = new JustValidate('#hybeForm');
-
-validation
-  .addField('#branchSelect', [{ rule: 'required' }])
-  .addField('#groupSelect', [{ rule: 'required' }])
-  .addField('#artistSelect', [{ rule: 'required' }])
-  .addField('#countryInput', [{ rule: 'required' }])
-  .addField('#selfieInput', [{ rule: 'required' }])
-  .addField('#agreeTerms', [{ rule: 'required' }])
-  .onSuccess(() => {
-    Swal.fire({
-      icon: 'success',
-      title: 'Success!',
-      text: 'Your subscription has been submitted!',
-      confirmButtonColor: '#007bff'
-    });
-    document.getElementById('hybeForm').reset();
-    document.getElementById('preview').classList.add('hidden');
-  });
+function previewImage(event) {
+  const output = document.getElementById('previewSelfie');
+  output.src = URL.createObjectURL(event.target.files[0]);
+  output.classList.remove('hidden');
+}
 </script>
 
 </body>
